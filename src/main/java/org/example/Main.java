@@ -1,15 +1,7 @@
 package org.example;
 
 import org.example.models.*;
-import org.example.models.enums.TypeChambre;
-import org.example.models.enums.TypeHebergement;
-import org.example.models.enums.TypeService;
 import org.example.singleton.Annuaire;
-
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.

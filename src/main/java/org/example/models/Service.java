@@ -1,6 +1,7 @@
 package org.example.models;
 
 import org.example.models.enums.TypeService;
+import org.example.models.hebergement.Hebergement;
 
 import java.util.Objects;
 
@@ -9,9 +10,8 @@ public class Service {
     private Double _prix;
     private Hebergement _hebergement;
 
-    public Service(TypeService type, Hebergement herbergement, Double prix) {
+    public Service(TypeService type, Double prix) {          // CORRECTION : retrait de Hebergement
         this.set_type(type);
-        this.set_hebergement(herbergement);
         this.set_prix(prix);
     }
 
@@ -30,8 +30,8 @@ public class Service {
     }
 
     public void set_prix(Double _prix) {
-        if (_prix <= 0)
-            throw new IllegalArgumentException("Le prix doit être suppérieur à 0");
+        if (_prix == null || _prix <= 0)                      // CORRECTION : ajout du check null
+            throw new IllegalArgumentException("Le prix doit être supérieur à 0");
         this._prix = _prix;
     }
 
@@ -39,7 +39,7 @@ public class Service {
         return _hebergement;
     }
 
-    public void set_hebergement(Hebergement _hebergement) {
+    public void set_hebergement(Hebergement _hebergement) {   // inchangé : appelé par addService()
         if (_hebergement == null)
             throw new IllegalArgumentException("L'hébergement ne doit pas être null");
         this._hebergement = _hebergement;

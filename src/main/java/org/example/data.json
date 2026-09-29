@@ -1,0 +1,170 @@
+{
+  "hebergements": [
+    {
+      "id": "H1",
+      "type": "HOTEL",
+      "adresse": {
+        "pays": "Canada",
+        "province": "Québec",
+        "ville": "Chicoutimi",
+        "quartier": "Centre-ville",
+        "rue": "Racine"
+      },
+      "chambres": [
+        { "id": "C1", "type": "SIMPLE", "prix": 89.99, "nombreDisponible": 5 },
+        { "id": "C2", "type": "DOUBLE", "prix": 119.99, "nombreDisponible": 3 },
+        { "id": "C3", "type": "SUITE", "prix": 219.99, "nombreDisponible": 1 }
+      ],
+      "services": [
+        { "id": "S1", "type": "PISCINE_INTERIEURE", "prix": 15.00 },
+        { "id": "S2", "type": "STATIONNEMENT", "prix": 10.00 },
+        { "id": "S3", "type": "SALLE_CONDITIONNEMENT_PHYSIQUE", "prix": 8.00 },
+        { "id": "S4", "type": "RESTAURANT", "prix": 0.00 }
+      ]
+    },
+    {
+      "id": "H2",
+      "type": "MOTEL",
+      "adresse": {
+        "pays": "Canada",
+        "province": "Québec",
+        "ville": "Jonquière",
+        "quartier": "Arvida",
+        "rue": "Boulevard Mellon"
+      },
+      "chambres": [
+        { "id": "C4", "type": "SIMPLE", "prix": 59.99, "nombreDisponible": 8 },
+        { "id": "C5", "type": "DOUBLE", "prix": 79.99, "nombreDisponible": 4 }
+      ],
+      "services": [
+        { "id": "S5", "type": "STATIONNEMENT", "prix": 0.00 },
+        { "id": "S6", "type": "ACCES_HANDICAPE", "prix": 0.00 },
+        { "id": "S7", "type": "DEPANNEUR", "prix": 0.00 }
+      ]
+    },
+    {
+      "id": "H3",
+      "type": "COUETTE_ET_CAFE",
+      "adresse": {
+        "pays": "Canada",
+        "province": "Québec",
+        "ville": "La Baie",
+        "quartier": null,
+        "rue": "Chemin de la Baie"
+      },
+      "chambres": [
+        { "id": "C6", "type": "SIMPLE", "prix": 74.99, "nombreDisponible": 2 },
+        { "id": "C7", "type": "SUITE", "prix": 149.99, "nombreDisponible": 1 }
+      ],
+      "services": [
+        { "id": "S8", "type": "CUISINETTE", "prix": 0.00 }
+      ]
+    }
+  ],
+
+  "clients": [
+    {
+      "id": "CL1",
+      "nom": "Apafi NiDévoyager",
+      "email": "apafi.nidevoyager@agence-voyage.qc.ca",
+      "numtel": "418-555-0101",
+      "adresse": {
+        "pays": "Canada",
+        "province": "Québec",
+        "ville": "Chicoutimi",
+        "quartier": "Centre-ville",
+        "rue": "Talbot"
+      }
+    },
+    {
+      "id": "CL2",
+      "nom": "Marc Tremblay",
+      "email": "marc.tremblay@courriel.com",
+      "numtel": "581-555-0202",
+      "adresse": {
+        "pays": "Canada",
+        "province": "Québec",
+        "ville": "Québec",
+        "quartier": null,
+        "rue": "Grande Allée"
+      }
+    },
+    {
+      "id": "CL3",
+      "nom": "Sophie Gagnon",
+      "email": "sophie.gagnon@courriel.com",
+      "numtel": "418-555-0303",
+      "adresse": {
+        "pays": "Canada",
+        "province": "Québec",
+        "ville": "Montréal",
+        "quartier": "Plateau",
+        "rue": "Saint-Denis"
+      }
+    }
+  ],
+
+  "reservations": [
+    {
+      "id": "R1",
+      "clientId": "CL1",
+      "chambreId": "C3",
+      "hebergementId": "H1",
+      "servicesIds": ["S1", "S2"],
+      "dateArrivee": "2026-12-20T15:00:00",
+      "dateDepart": "2026-12-27T11:00:00",
+      "commentaire": "Réservation normale, doit réussir (1 seule suite dispo, 0 réservation existante)"
+    },
+    {
+      "id": "R2",
+      "clientId": "CL2",
+      "chambreId": "C2",
+      "hebergementId": "H1",
+      "servicesIds": ["S2"],
+      "dateArrivee": "2026-11-01T15:00:00",
+      "dateDepart": "2026-11-04T11:00:00",
+      "commentaire": "Réservation normale, doit réussir (chambre DOUBLE, 3 dispo)"
+    },
+    {
+      "id": "R3",
+      "clientId": "CL3",
+      "chambreId": "C2",
+      "hebergementId": "H1",
+      "servicesIds": [],
+      "dateArrivee": "2026-11-02T15:00:00",
+      "dateDepart": "2026-11-03T11:00:00",
+      "commentaire": "Chevauche R2 sur la même chambre DOUBLE (3 dispo) - doit réussir, il en reste"
+    },
+    {
+      "id": "R4",
+      "clientId": "CL2",
+      "chambreId": "C3",
+      "hebergementId": "H1",
+      "servicesIds": [],
+      "dateArrivee": "2026-12-22T15:00:00",
+      "dateDepart": "2026-12-24T11:00:00",
+      "commentaire": "Chevauche R1 sur la SUITE (1 seule dispo) - DOIT ÉCHOUER (IllegalStateException attendue)"
+    },
+    {
+      "id": "R5",
+      "clientId": "CL3",
+      "chambreId": "C6",
+      "hebergementId": "H3",
+      "servicesIds": ["S8"],
+      "dateArrivee": "2027-01-05T15:00:00",
+      "dateDepart": "2027-01-08T11:00:00",
+      "commentaire": "Réservation normale au Couette et Café, doit réussir"
+    }
+  ],
+
+  "critereRecherche_exemple": {
+    "typeHebergement": "HOTEL",
+    "ville": "Chicoutimi",
+    "typeChambre": "DOUBLE",
+    "servicesRequis": ["STATIONNEMENT"],
+    "prixMax": 150.00,
+    "dateArrivee": "2026-11-01T15:00:00",
+    "dateDepart": "2026-11-04T11:00:00",
+    "commentaire": "Devrait retourner la chambre C2 de H1 (DOUBLE, 119.99$, stationnement offert)"
+  }
+}
