@@ -21,7 +21,8 @@ public class Annuaire {
     private ArrayList<Client> _clients = new ArrayList<>();
     private ArrayList<Hebergement> _hebergements = new ArrayList<>();
 
-    private Annuaire(){}
+    private Annuaire() {
+    }
 
     public List<Client> get_clients() {
         return Collections.unmodifiableList(_clients);
@@ -118,5 +119,10 @@ public class Annuaire {
         }
 
         return true;
+    }
+    void clear() {
+        _reservations.clear();
+        _clients.clear();
+        _hebergements.clear();
     }
 }

@@ -30,7 +30,7 @@ public class Service {
     }
 
     public void set_prix(Double _prix) {
-        if (_prix == null || _prix <= 0)                      // CORRECTION : ajout du check null
+        if (_prix == null || _prix < 0)                      // CORRECTION : ajout du check null
             throw new IllegalArgumentException("Le prix doit être supérieur à 0");
         this._prix = _prix;
     }
