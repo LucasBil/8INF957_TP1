@@ -1,4 +1,4 @@
-name: tests.yml
+name: Tests
 
 on:
   push:
@@ -12,24 +12,17 @@ jobs:
       - name: Récupérer le code
         uses: actions/checkout@v4
 
-      - name: Installer Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '27'
+      - name: Construire l'image de tests
+        run: docker build --target test -t hotel-tests .
 
-      - name: Configurer Gradle
-        uses: gradle/actions/setup-gradle@v4
-
-      - name: Rendre gradlew exécutable
-        run: chmod +x ./gradlew
-
-      - name: Lancer les tests
-        run: ./gradlew test
+      - name: Lancer les tests dans Docker
+        run: |
+          mkdir -p rapport
+          docker run --rm -v "${{ github.workspace }}/rapport:/app/build/reports" hotel-tests
 
       - name: Publier le rapport de tests
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: rapport-tests
-          path: build/reports/tests/test/
+          path: rapport/tests/test/
