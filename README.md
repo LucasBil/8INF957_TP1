@@ -16,7 +16,7 @@ Pour lancer le projet, il faut d'abord compiler avec
 ```
 ./gradlew build
 ```
-Et ensuite, il faut lancer la classe main en se plaçant dans le dossier (org.example)[src/main/org.example] et en lançant la commande 
+Et ensuite, il faut lancer la classe main en se plaçant dans le dossier [org.example](src/main/org.example) et en lançant la commande 
 ```
 java main.java
 ```
